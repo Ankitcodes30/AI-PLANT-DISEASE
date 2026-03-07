@@ -1,8 +1,10 @@
+import os
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
-MODEL_PATH = '../models/saved_models/best_model.keras'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, 'models', 'saved_models', 'best_model.keras')
 IMG_SIZE = 224
 
 CLASS_NAMES = [
@@ -22,6 +24,11 @@ model = None
 def load_trained_model():
     global model
     if model is None:
+        if not os.path.exists(MODEL_PATH):
+            raise FileNotFoundError(
+                f"Model not found at {MODEL_PATH}. "
+                "Please train the model first by running: python src/train.py"
+            )
         model = load_model(MODEL_PATH)
     return model
 

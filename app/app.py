@@ -31,9 +31,17 @@ def predict():
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
         
-        result = predict_disease(filepath)
-        
-        return jsonify(result)
+        try:
+            result = predict_disease(filepath)
+            return jsonify(result)
+        except FileNotFoundError as e:
+            return jsonify({
+                'error': 'Model not trained yet',
+                'message': str(e),
+                'instruction': 'Please run: python src/train.py'
+            }), 500
+        except Exception as e:
+            return jsonify({'error': f'Prediction failed: {str(e)}'}), 500
     
     return jsonify({'error': 'Invalid file type'}), 400
 

@@ -3,19 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlantCare AI - Disease Detection</title>
+    <meta name="description" content="PlantCare AI - Advanced plant disease detection using deep learning and transfer learning">
+    <meta name="keywords" content="plant disease, AI, machine learning, agriculture, MobileNetV2">
+    <meta name="author" content="PlantCare AI Team">
+    <title>PlantCare AI - Plant Disease Detection</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>🌱 PlantCare AI</h1>
-        <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-            <p>Click to upload plant leaf image</p>
-            <input type="file" id="fileInput" accept="image/*">
-        </div>
-        <img id="preview" class="preview" style="display:none;">
-        <button onclick="uploadImage()">Detect Disease</button>
-        <div id="result" style="display:none;"></div>
+        <header>
+            <h1>🌱 PlantCare AI</h1>
+            <p style="text-align: center; color: #0f766e; margin-bottom: 20px;">
+                Advanced Plant Disease Detection System
+            </p>
+        </header>
+        
+        <main>
+            <div class="upload-area" onclick="document.getElementById('fileInput').click()" role="button" tabindex="0" aria-label="Upload plant leaf image">
+                <p>📸 Click to upload plant leaf image</p>
+                <p style="font-size: 0.9em; color: #14b8a6; margin-top: 10px;">
+                    Supports: JPG, JPEG, PNG
+                </p>
+                <input type="file" id="fileInput" accept="image/jpeg,image/jpg,image/png" aria-label="File input">
+            </div>
+            
+            <img id="preview" class="preview" style="display:none;" alt="Preview of uploaded plant image">
+            
+            <button onclick="uploadImage()" aria-label="Detect plant disease">
+                🔍 Detect Disease
+            </button>
+            
+            <div id="result" style="display:none;" role="alert" aria-live="polite"></div>
+        </main>
+        
+        <footer style="margin-top: 30px; text-align: center; color: #14b8a6; font-size: 0.9em;">
+            <p>Powered by MobileNetV2 Transfer Learning</p>
+        </footer>
     </div>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>

@@ -27,3 +27,13 @@ instance/
 # IDE
 .vscode/
 .idea/
+
+# Environment
+.env
+.env.local
+
+# Node
+node_modules/
+.vite/
+dist/
+build/

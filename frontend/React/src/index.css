@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PlantCare AI Design System */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 150 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 150 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 10% 10%;
+
+    --primary: 142 71% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --primary-light: 142 60% 92%;
+    --primary-glow: 142 71% 50%;
+
+    --secondary: 142 30% 96%;
+    --secondary-foreground: 142 71% 25%;
+
+    --muted: 150 10% 95%;
+    --muted-foreground: 150 10% 45%;
+
+    --accent: 142 60% 92%;
+    --accent-foreground: 142 71% 25%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 15% 88%;
+    --input: 150 15% 88%;
+    --ring: 142 71% 35%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 150 10% 10%;
+    --sidebar-primary: 142 71% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 142 60% 92%;
+    --sidebar-accent-foreground: 142 71% 25%;
+    --sidebar-border: 150 15% 88%;
+    --sidebar-ring: 142 71% 35%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(142, 71%, 35%) 0%, hsl(162, 65%, 30%) 100%);
+    --gradient-cta: linear-gradient(120deg, hsl(142, 71%, 32%) 0%, hsl(152, 70%, 27%) 100%);
+    --shadow-card: 0 4px 24px -4px hsl(142 71% 35% / 0.12);
+    --shadow-primary: 0 8px 32px -8px hsl(142 71% 35% / 0.35);
+  }
+
+  .dark {
+    --background: 150 15% 7%;
+    --foreground: 150 10% 95%;
+    --card: 150 15% 10%;
+    --card-foreground: 150 10% 95%;
+    --popover: 150 15% 10%;
+    --popover-foreground: 150 10% 95%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 150 15% 15%;
+    --secondary-foreground: 142 60% 80%;
+    --muted: 150 15% 15%;
+    --muted-foreground: 150 10% 60%;
+    --accent: 142 40% 15%;
+    --accent-foreground: 142 60% 80%;
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 150 15% 20%;
+    --input: 150 15% 20%;
+    --ring: 142 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  .gradient-cta {
+    background: var(--gradient-cta);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-primary {
+    box-shadow: var(--shadow-primary);
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(142, 71%, 30%), hsl(162, 65%, 25%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

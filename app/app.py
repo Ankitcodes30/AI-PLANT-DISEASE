@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 import os
 import uuid
 from werkzeug.utils import secure_filename
 from utils import predict_disease
 
 app = Flask(__name__)
+CORS(app, resources={r"/predict": {"origins": "*"}})
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 

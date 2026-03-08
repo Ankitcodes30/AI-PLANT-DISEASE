@@ -38,20 +38,27 @@ def load_trained_model():
     return model
 
 def predict_disease(img_path):
-    model = load_trained_model()
-    
-    img = image.load_img(img_path, target_size=(IMG_SIZE, IMG_SIZE))
-    img_array = image.img_to_array(img)
-    img_array = np.expand_dims(img_array, axis=0)
-    img_array /= 255.0
-    
-    predictions = model.predict(img_array)
-    predicted_class = np.argmax(predictions[0])
-    confidence = float(predictions[0][predicted_class])
-    
-    disease_name = CLASS_NAMES[predicted_class] if predicted_class < len(CLASS_NAMES) else "Unknown"
-    
-    return {
-        'disease': disease_name,
-        'confidence': f"{confidence * 100:.2f}%"
-    }
+    try:
+        model = load_trained_model()
+        
+        # Validate image file exists and is readable
+        if not os.path.exists(img_path):
+            raise FileNotFoundError(f"Image file not found: {img_path}")
+        
+        img = image.load_img(img_path, target_size=(IMG_SIZE, IMG_SIZE))
+        img_array = image.img_to_array(img)
+        img_array = np.expand_dims(img_array, axis=0)
+        img_array /= 255.0
+        
+        predictions = model.predict(img_array, verbose=0)
+        predicted_class = np.argmax(predictions[0])
+        confidence = float(predictions[0][predicted_class])
+        
+        disease_name = CLASS_NAMES[predicted_class] if predicted_class < len(CLASS_NAMES) else "Unknown"
+        
+        return {
+            'disease': disease_name,
+            'confidence': f"{confidence * 100:.2f}%"
+        }
+    except Exception as e:
+        raise Exception(f"Prediction error: {str(e)}")

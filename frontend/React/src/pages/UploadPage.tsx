@@ -79,7 +79,10 @@ const UploadPage = () => {
 
   return (
     <div style={styles.body}>
-      <div style={styles.container}>
+      {/* Teal Glow Background */}
+      <div style={styles.pinkGlow} />
+      
+      <div style={{ ...styles.container, position: "relative", zIndex: 1 }}>
         <h1 style={styles.h1}>🌱 PlantCare AI</h1>
 
         {/* Upload Area */}
@@ -169,12 +172,20 @@ const UploadPage = () => {
 // Inline styles matching your original style.css exactly
 const styles: Record<string, React.CSSProperties> = {
   body: {
-    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    position: "relative",
     minHeight: "100vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     padding: "40px 16px",
+    background: "white",
+  },
+  pinkGlow: {
+    position: "absolute",
+    inset: "0",
+    zIndex: "0",
+    backgroundImage: "radial-gradient(125% 125% at 50% 90%, #ffffff 40%, #14b8a6 100%)",
+    backgroundSize: "100% 100%",
   },
   container: {
     background: "white",

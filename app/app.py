@@ -29,6 +29,13 @@ def predict():
     if file.filename == '':
         return jsonify({'error': 'No file selected'}), 400
     
+    # Validate file size
+    file.seek(0, os.SEEK_END)
+    file_length = file.tell()
+    if file_length == 0:
+        return jsonify({'error': 'Empty file uploaded'}), 400
+    file.seek(0)
+    
     if file and allowed_file(file.filename):
         # Generate unique filename to prevent conflicts
         ext = secure_filename(file.filename).rsplit('.', 1)[1].lower()
@@ -55,7 +62,7 @@ def predict():
                 except Exception:
                     pass
     
-    return jsonify({'error': 'Invalid file type'}), 400
+    return jsonify({'error': 'Invalid file type. Please upload JPG, JPEG, or PNG'}), 400
 
 if __name__ == '__main__':
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)

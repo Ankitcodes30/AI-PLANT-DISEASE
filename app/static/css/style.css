@@ -214,4 +214,27 @@ button:active {
     .upload-area {
         padding: 30px 20px;
     }
+    
+    button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 1.3em;
+    }
+    
+    .upload-area {
+        padding: 20px 15px;
+    }
+    
+    .upload-area p {
+        font-size: 1em;
+    }
 }

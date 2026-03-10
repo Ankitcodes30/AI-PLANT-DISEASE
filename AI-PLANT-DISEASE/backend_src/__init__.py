@@ -1,1 +1,0 @@
-# PlantCare AI Source Package
